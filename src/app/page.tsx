@@ -7,25 +7,122 @@ type SubscriptionItem = {
   monthly: number;
 };
 
+type PackCard = {
+  name: string;
+  price: string;
+  forWho: string;
+  handlesBest: string;
+  outcome: string;
+  highlight: string;
+};
+
 const subscriptions: SubscriptionItem[] = [
   { name: "Netflix", monthly: 419 },
   { name: "Spotify", monthly: 139 },
   { name: "Canva Pro", monthly: 420 },
   { name: "Google One", monthly: 99 },
   { name: "YouTube Premium", monthly: 179 },
+  { name: "Notion Plus", monthly: 189 },
 ];
 
-const onboardingVariant: "A" | "B" = "B";
-const packEntryVariant: "A" | "B" = "B";
-const compareVariant: "A" | "B" = "B";
+const painPoints = [
+  "สมัครไว้หลายแอป แต่จำไม่ได้ว่าอันไหนยังใช้อยู่จริง",
+  "เงินโดนตัดอัตโนมัติจนงบรายเดือนบานโดยไม่ทันตั้งตัว",
+  "รู้ตัวอีกทีคือตอนยอดรวมรายปีสูงเกินที่คิด",
+];
+
+const solutionOutcomes = [
+  {
+    title: "เห็นเงินที่ไหลออกทุกเดือนก่อนจะสาย",
+    desc: "เปิดหน้าเดียวแล้วรู้ทันทีว่าตอนนี้จ่ายอะไรอยู่บ้าง เพื่อหยุดรายจ่ายที่ไม่คุ้มได้เร็วขึ้น",
+  },
+  {
+    title: "ตัดสินใจยกเลิกได้ตรงเวลา",
+    desc: "รับแจ้งเตือนก่อนรอบตัดบิล ทำให้มีเวลาเช็กว่าแอปนั้นยังจำเป็นอยู่ไหมก่อนเงินถูกตัด",
+  },
+  {
+    title: "วางแผนงบรายเดือนแบบไม่เดา",
+    desc: "เห็นภาพรวมรายเดือนและรายปีชัดเจน จัดสัดส่วนค่าใช้จ่าย subscription ให้บาลานซ์กับเป้าหมายการเรียนและงาน",
+  },
+];
+
+const howItWorks = [
+  {
+    step: "Step 1",
+    title: "เพิ่ม subscription ที่ใช้อยู่",
+    desc: "เลือกบริการที่คุณจ่ายอยู่ตอนนี้เพื่อให้เห็นภาพค่าใช้จ่ายจริงทันที",
+  },
+  {
+    step: "Step 2",
+    title: "ดูยอดรวมรายเดือนและรายปีทันที",
+    desc: "ระบบรวมตัวเลขให้ในหน้าเดียว คุณจึงรู้ว่าตอนนี้งบไหลออกเท่าไร",
+  },
+  {
+    step: "Step 3",
+    title: "รับแจ้งเตือนก่อนถึงรอบตัดบิล",
+    desc: "เตือนล่วงหน้าผ่าน LINE เพื่อให้คุณตัดสินใจก่อนเงินถูกตัดอัตโนมัติ",
+  },
+];
+
+const packCards: PackCard[] = [
+  {
+    name: "Student Focus",
+    price: "฿299/เดือน",
+    forWho: "สำหรับสายเรียนที่ต้องการคุม productivity tools และ cloud storage ให้ชัด",
+    handlesBest: "เหมาะกับชุดเครื่องมือเรียน/ทำงาน เช่น Notion, Google One, Spotify",
+    outcome: "ช่วยให้เห็นงบที่ใช้กับการเรียนชัดขึ้น และกันเงินรั่วจากแอปที่ไม่ได้ใช้",
+    highlight: "ลดความคลุมเครืองบได้ทันที",
+  },
+  {
+    name: "Creator Boost",
+    price: "฿699/เดือน",
+    forWho: "สำหรับคนทำคอนเทนต์ที่จ่ายหลายเครื่องมือรายเดือนและต้องการเห็นภาพรวม",
+    handlesBest: "เหมาะกับ Canva, AI tools, เครื่องมือจัดการงานและไฟล์",
+    outcome: "ช่วยคุมต้นทุนคอนเทนต์รายเดือนให้สม่ำเสมอและรู้ว่าควรตัดตัวไหนก่อน",
+    highlight: "เห็นต้นทุนคอนเทนต์รวมในหน้าเดียว",
+  },
+  {
+    name: "Dev Stack",
+    price: "฿899/เดือน",
+    forWho: "สำหรับ developer ที่ต้องควบคุม recurring SaaS และ infra subscriptions",
+    handlesBest: "เหมาะกับเครื่องมือ dev, cloud, monitoring และ AI coding subscriptions",
+    outcome: "ช่วยคุม recurring cost ของสแตกให้ไม่บานปลายเมื่อโปรเจกต์โตขึ้น",
+    highlight: "คุม recurring SaaS/infra ให้ชัดเจน",
+  },
+];
+
+const faqs = [
+  {
+    q: "ต้องผูกบัตรไหม",
+    a: "ไม่ต้องผูกบัตร และไม่ต้องเชื่อมบัญชีธนาคาร คุณเพิ่มรายการ subscription ด้วยตัวเองเพื่อรับการเตือนล่วงหน้าได้เลย",
+  },
+  {
+    q: "รองรับแอปอะไรบ้าง",
+    a: "รองรับการติดตาม subscription ที่ใช้บ่อย เช่นสตรีมมิง, productivity, cloud และ SaaS อื่น ๆ โดยเพิ่มรายการเองในระบบ",
+  },
+  {
+    q: "แจ้งเตือนผ่าน LINE ยังไง",
+    a: "เมื่อกำหนดรอบบิลแล้ว ระบบจะส่งข้อความเตือนก่อนถึงวันตัดบิลผ่าน LINE เพื่อให้คุณมีเวลาตรวจสอบก่อนจ่าย",
+  },
+  {
+    q: "ใช้งานฟรีไหม",
+    a: "มีแพ็กให้เลือกตามรูปแบบการใช้งาน และมีทางเลือกเริ่มต้นฟรีเพื่อดูภาพรวมค่าใช้จ่ายก่อนตัดสินใจอัปเกรด",
+  },
+  {
+    q: "ถ้าไม่ได้เชื่อมบัตร ระบบเตือนได้ยังไง",
+    a: "ระบบอิงจากรอบบิลที่คุณบันทึกไว้ จึงส่งเตือนได้โดยไม่ต้องเข้าถึงข้อมูลบัตรหรือบัญชีธนาคาร",
+  },
+  {
+    q: "ข้อมูลปลอดภัยแค่ไหน",
+    a: "Sub Manager อยู่ในช่วง prototype — ยังไม่ได้เชื่อมต่อระบบชำระเงินจริง และออกแบบให้เก็บเฉพาะข้อมูลที่จำเป็นต่อการเตือนเท่านั้น",
+  },
+];
 
 export default function Home() {
   const focusVisibleRing =
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950";
-  const focusVisibleRingOnBlue =
-    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-200 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-700";
 
-  const [selected, setSelected] = useState<string[]>(["Netflix", "Canva Pro"]);
+  const [selected, setSelected] = useState<string[]>(["Netflix", "Canva Pro", "Notion Plus"]);
 
   const monthlyTotal = useMemo(
     () =>
@@ -49,20 +146,18 @@ export default function Home() {
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
           <p className="text-2xl font-bold tracking-tight">
             <span className="text-white">Sub</span>
-            <span className="text-blue-600 drop-shadow-[0_0_8px_rgba(37,99,235,0.8)]">Manager</span>
+            <span className="text-blue-500 drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]">Manager</span>
           </p>
-          <div className="flex items-center gap-5 text-sm font-medium text-slate-100">
-            <a href="#features" className={`rounded-sm text-slate-100 hover:text-white ${focusVisibleRing}`}>
-              Features
+          <div className="hidden items-center gap-5 text-sm font-medium text-slate-100 md:flex">
+            <a href="#calculator" className={`rounded-sm text-slate-100 hover:text-white ${focusVisibleRing}`}>
+              Calculator
             </a>
             <a href="#packs" className={`rounded-sm text-slate-100 hover:text-white ${focusVisibleRing}`}>
               Packs
             </a>
-            <button
-              className={`rounded-full border border-slate-500 px-4 py-1.5 text-slate-100 hover:border-slate-200 hover:text-white ${focusVisibleRing}`}
-            >
-              Log in
-            </button>
+            <a href="#faq" className={`rounded-sm text-slate-100 hover:text-white ${focusVisibleRing}`}>
+              FAQ
+            </a>
           </div>
         </div>
       </nav>
@@ -73,81 +168,88 @@ export default function Home() {
             <div className="absolute left-[-12%] top-[-30%] h-72 w-72 rounded-full bg-[radial-gradient(circle,_rgba(59,130,246,0.2)_0%,_rgba(59,130,246,0)_72%)]" />
             <div className="absolute bottom-[-36%] right-[-10%] h-96 w-96 rounded-full bg-[radial-gradient(circle,_rgba(14,165,233,0.18)_0%,_rgba(14,165,233,0)_70%)]" />
           </div>
-          <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-2 md:items-center">
-            <div className="space-y-6">
-            <p className="inline-flex rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700">
-              Phase 1: Value Moment + Affiliate CTR
-            </p>
-            <h1 className="text-4xl font-bold leading-tight md:text-5xl">
-              หยุด &ldquo;เงินรั่วไหล&rdquo; จัดการทุก Subscription จบในที่เดียว
-            </h1>
-            <p className="text-lg text-slate-700">
-              รวมทุก Subscription ไว้ที่เดียว เห็นยอดรวมชัดเจน รับการแจ้งเตือนก่อนตัดบิล 3-5 วัน
-              ผ่าน Email และ LINE พร้อมแนะนำแพ็กที่คุ้มที่สุดสำหรับคุณ
-            </p>
-            <div className="flex flex-wrap gap-3">
-              {onboardingVariant === "A" ? (
+          <div className="mx-auto grid max-w-6xl gap-10 px-6 py-14 md:grid-cols-2 md:items-center">
+            <div className="space-y-5">
+              <p className="inline-flex rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700">
+                คุม subscription ก่อนเงินหายไปแบบไม่รู้ตัว
+              </p>
+              <h1 className="text-4xl font-bold leading-tight md:text-5xl">
+                หยุดเงินรั่วจาก Subscription ที่คุณไม่ได้ตั้งใจจ่าย
+              </h1>
+              <p className="text-lg text-slate-700">
+                รู้ล่วงหน้าว่าเงินจะถูกตัดเมื่อไรและคุมยอดรวมรายเดือนให้ไม่บานปลาย แม้คุณใช้หลายบริการพร้อมกัน.
+              </p>
+              <div className="flex flex-wrap gap-3">
                 <button
-                  className={`rounded-full bg-blue-700 px-6 py-3 font-semibold text-white hover:bg-blue-800 ${focusVisibleRing}`}
+                  className={`cta-primary rounded-full bg-blue-700 px-6 py-3 font-semibold text-white shadow-lg shadow-blue-200 hover:bg-blue-800 ${focusVisibleRing}`}
                 >
-                  เพิ่มรายการของคุณ
+                  สร้างบัญชีฟรี
                 </button>
-              ) : (
                 <button
-                  className={`rounded-full bg-blue-700 px-6 py-3 font-semibold text-white hover:bg-blue-800 ${focusVisibleRing}`}
+                  className={`rounded-full border border-blue-200 bg-blue-50 px-6 py-3 font-semibold text-blue-800 hover:bg-blue-100 ${focusVisibleRing}`}
                 >
                   เริ่มใช้งานผ่าน LINE
                 </button>
-              )}
-              <button
-                className={`rounded-full border border-slate-400 bg-white px-6 py-3 font-semibold text-slate-800 hover:bg-slate-100 ${focusVisibleRing}`}
-              >
-                ดูเดโมแดชบอร์ด
-              </button>
-            </div>
-            <p className="text-xs font-medium text-slate-500">
-              Active Experiment: Onboarding Variant {onboardingVariant}
-            </p>
+                <button
+                  className={`rounded-full border border-slate-300 bg-white px-6 py-3 font-medium text-slate-700 hover:bg-slate-100 ${focusVisibleRing}`}
+                >
+                  ดูเดโมแดชบอร์ด
+                </button>
+              </div>
             </div>
             <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-xl">
               <div className="rounded-2xl bg-slate-900 p-4 text-white shadow-2xl">
                 <p className="text-xs text-slate-200">LINE Alert Preview</p>
                 <div className="mt-3 rounded-xl bg-slate-800 p-4">
-                  <p className="text-sm text-slate-100">🔔 พรุ่งนี้ Netflix จะตัดเงิน 419 บ. เตรียมเงินไว้ด้วยนะ!</p>
+                  <p className="text-sm text-slate-100">🔔 พรุ่งนี้ Netflix จะตัดเงิน 419 บ. ถ้ายังไม่ได้ใช้ ลองพิจารณาหยุดก่อนรอบบิลนะ</p>
                 </div>
               </div>
               <div className="mt-4 grid grid-cols-2 gap-3 text-sm">
                 <div className="rounded-xl bg-slate-100 p-3">
                   <p className="text-slate-500">Monthly Total</p>
-                  <p className="text-xl font-bold">฿2,390</p>
+                  <p className="mt-1 text-xl font-bold">฿{monthlyTotal.toLocaleString()}</p>
                 </div>
                 <div className="rounded-xl bg-blue-50 p-3">
-                  <p className="text-blue-700">Next Bill</p>
-                  <p className="text-xl font-bold text-blue-800">Tomorrow</p>
+                  <p className="text-blue-700">Potential Save</p>
+                  <p className="mt-1 text-xl font-bold text-blue-800">ลดเงินรั่วได้ทันที</p>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="relative isolate overflow-hidden bg-slate-950 py-16 text-white">
-          <div className="pointer-events-none absolute inset-0 -z-10 opacity-45">
-            <div className="absolute left-[-14%] top-[-15%] h-80 w-80 rounded-full bg-[radial-gradient(circle,_rgba(59,130,246,0.35)_0%,_rgba(59,130,246,0)_72%)]" />
-            <div className="absolute bottom-[-30%] right-[8%] h-96 w-96 rounded-full bg-[radial-gradient(circle,_rgba(147,197,253,0.25)_0%,_rgba(147,197,253,0)_74%)]" />
+        <section className="bg-slate-950 py-14 text-white">
+          <div className="mx-auto max-w-6xl px-6">
+            <h2 className="text-3xl font-bold">เงินรั่วไหลเกิดจากการลืม ไม่ใช่จากการตั้งใจจ่าย</h2>
+            <p className="mt-3 max-w-3xl text-slate-200">
+              ยิ่งใช้หลายบริการ ยิ่งมีโอกาสลืมรอบบิลและจ่ายซ้ำโดยไม่รู้ตัว สิ่งที่ต้องมีคือภาพรวมที่ชัดเจนและการเตือนก่อนเงินถูกตัด.
+            </p>
+            <div className="mt-6 grid gap-3 md:grid-cols-3">
+              {painPoints.map((pain) => (
+                <div key={pain} className="rounded-xl border border-red-900/40 bg-red-950/30 p-4 text-sm text-red-100">
+                  ⚠️ {pain}
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="relative z-10 mx-auto max-w-6xl px-6">
-            <h2 className="text-3xl font-bold">คุณจ่ายแอปซ้ำซ้อนอยู่เท่าไร?</h2>
-            <p className="mt-2 text-slate-100">ติ๊กแอปที่ใช้อยู่ แล้วดูเงินรั่วไหลต่อปีแบบเรียลไทม์</p>
+        </section>
+
+        <section id="calculator" className="bg-slate-900 py-16 text-white">
+          <div className="mx-auto max-w-6xl px-6">
+            <h2 className="text-3xl font-bold">คำนวณก่อนว่าเงินคุณไหลออกเดือนละเท่าไร</h2>
+            <p className="mt-3 max-w-3xl text-slate-300">
+              เลือกรายการที่คุณใช้อยู่ด้านล่าง เพื่อเห็นตัวเลขรวมทันทีและเช็กว่ามีรายการไหนที่ควรหยุดก่อนรอบตัดบิลถัดไป.
+            </p>
             <div className="mt-8 grid gap-8 md:grid-cols-2">
               <div className="space-y-3">
                 {subscriptions.map((item) => (
-                  <label key={item.name} className="flex items-center justify-between rounded-xl border border-slate-800 p-4">
+                  <label key={item.name} className="flex items-center justify-between rounded-xl border border-slate-700 bg-slate-950 p-4">
                     <span>{item.name}</span>
                     <div className="flex items-center gap-4">
-                      <span className="text-slate-200">฿{item.monthly}/เดือน</span>
+                      <span className="text-slate-400">฿{item.monthly}/เดือน</span>
                       <input
                         type="checkbox"
-                        className="h-4 w-4 accent-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+                        className="h-4 w-4 accent-blue-500"
                         checked={selected.includes(item.name)}
                         onChange={() => toggleApp(item.name)}
                       />
@@ -155,149 +257,139 @@ export default function Home() {
                   </label>
                 ))}
               </div>
-              <div className="rounded-2xl border border-blue-500/50 bg-slate-900 p-6">
-                <p className="text-slate-200">ยอดรายเดือนที่เลือก</p>
+              <div className="rounded-2xl border border-blue-500/50 bg-slate-950 p-6">
+                <p className="text-slate-400">ยอดรวมรายเดือนตอนนี้</p>
                 <p className="mt-1 text-5xl font-bold text-blue-400">฿{monthlyTotal.toLocaleString()}</p>
-                <p className="mt-6 text-lg text-slate-100">
-                  คุณอาจมีเงินรั่วไหล <span className="font-bold text-blue-300">฿{yearlyLeakage.toLocaleString()}/ปี</span>
-                  ให้เราช่วยเตือนก่อนโดนหักเงินฟรีๆ
+                <p className="mt-6 text-lg text-slate-200">
+                  ถ้าปล่อยไว้ทั้งปี คุณอาจจ่ายรวมประมาณ <span className="font-bold text-blue-300">฿{yearlyLeakage.toLocaleString()}/ปี</span>
                 </p>
+                <p className="mt-2 text-sm text-slate-400">ตัวเลขนี้ทำให้คุณตัดสินใจได้เร็วขึ้นว่าจะคงหรือยกเลิกรายการไหน</p>
               </div>
             </div>
           </div>
         </section>
 
-        <section id="features" className="bg-slate-100 py-16">
+        <section className="bg-blue-50 py-8">
           <div className="mx-auto max-w-6xl px-6">
-            <h2 className="text-3xl font-bold">Core Features ที่ได้ใช้ทันที</h2>
+            <p className="text-base font-semibold text-blue-900 md:text-lg">
+              ถ้าผลรวมด้านบนทำให้คุณแปลกใจ — Sub Manager ช่วยให้คุณเห็นตัวเลขนี้ได้ทุกวัน ไม่ใช่แค่ตอนคำนวณ.
+            </p>
+          </div>
+        </section>
+
+        <section className="bg-white py-16">
+          <div className="mx-auto max-w-6xl px-6">
+            <h2 className="text-3xl font-bold">ผลลัพธ์ที่คุณควรได้จากการจัดการ Subscription</h2>
             <div className="mt-8 grid gap-5 md:grid-cols-3">
-              {[
-                ["Proactive Alerts", "แจ้งเตือนก่อนตัดบิล 3-5 วัน ผ่าน Email และ LINE"],
-                ["Centralized Dashboard", "รวมทุกบริการไว้หน้าเดียว เห็นยอดรวมชัดเจน"],
-                ["Curated Packs", "แนะนำชุดเครื่องมือที่คุ้มค่า และพร้อมลิงก์สมัคร"],
-              ].map(([title, desc]) => (
-                <article key={title} className="rounded-2xl bg-white p-5 shadow-sm">
-                  <h3 className="text-xl font-semibold">{title}</h3>
-                  <p className="mt-2 text-slate-700">{desc}</p>
+              {solutionOutcomes.map((item) => (
+                <article key={item.title} className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+                  <h3 className="text-xl font-semibold">{item.title}</h3>
+                  <p className="mt-2 text-slate-600">{item.desc}</p>
                 </article>
               ))}
             </div>
-            <div className="mt-8 rounded-2xl bg-white p-6 shadow-sm">
-              <p className="text-sm text-slate-500">Dashboard Mockup</p>
-              <div className="mt-3 grid gap-4 md:grid-cols-[1fr_2fr]">
-                <div className="rounded-xl bg-blue-50 p-4">
-                  <p className="text-sm text-blue-700">Donut Summary</p>
-                  <p className="mt-2 text-2xl font-bold text-blue-800">฿2,390/mo</p>
-                </div>
-                <div className="grid gap-2 text-sm">
-                  {[
-                    "Netflix - Active",
-                    "Spotify - Pending",
-                    "Canva Pro - Active",
-                    "Notion - Pending",
-                  ].map((item) => (
-                    <div key={item} className="rounded-lg border border-slate-200 p-3">
-                      {item}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
           </div>
         </section>
 
-        <section id="packs" className="py-16">
+        <section className="bg-slate-100 py-16">
           <div className="mx-auto max-w-6xl px-6">
-            <h2 className="text-3xl font-bold">The Ecosystem: Subscription Packs</h2>
-            <p className="mt-2 text-slate-700">Active experiments: Pack Entry {packEntryVariant}, Compare UI {compareVariant}</p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              {packEntryVariant === "A" ? (
-                <button
-                  className={`rounded-full bg-slate-900 px-5 py-2 font-semibold text-white hover:bg-slate-800 ${focusVisibleRing}`}
-                >
-                  ดูแพ็กทั้งหมด
-                </button>
-              ) : (
-                <button
-                  className={`rounded-full bg-blue-700 px-5 py-2 font-semibold text-white hover:bg-blue-800 ${focusVisibleRing}`}
-                >
-                  ทำควิซค้นหา Pack ที่ใช่
-                </button>
-              )}
-              <button
-                className={`rounded-full border border-slate-400 bg-white px-5 py-2 font-semibold text-slate-800 hover:bg-slate-100 ${focusVisibleRing}`}
-              >
-                Student
-              </button>
-              <button
-                className={`rounded-full border border-slate-400 bg-white px-5 py-2 font-semibold text-slate-800 hover:bg-slate-100 ${focusVisibleRing}`}
-              >
-                Creator
-              </button>
-              <button
-                className={`rounded-full border border-slate-400 bg-white px-5 py-2 font-semibold text-slate-800 hover:bg-slate-100 ${focusVisibleRing}`}
-              >
-                Developer
-              </button>
-            </div>
-            <div className="mt-8 overflow-hidden rounded-2xl border border-slate-200">
-              <table className="w-full bg-white text-left text-sm">
-                <thead className="bg-slate-50">
-                  <tr>
-                    <th className="px-4 py-3">Pack</th>
-                    <th className="px-4 py-3">Monthly</th>
-                    <th className="px-4 py-3">Savings</th>
-                    <th className="px-4 py-3">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {[
-                    ["Student Focus", "฿299", "฿1,200/ปี"],
-                    ["Creator Boost", "฿699", "฿2,800/ปี"],
-                    ["Dev Stack", "฿899", "฿3,600/ปี"],
-                  ].map(([pack, price, saving]) => (
-                    <tr key={pack} className="border-t border-slate-100">
-                      <td className="px-4 py-3">{pack}</td>
-                      <td className="px-4 py-3">{price}</td>
-                      <td className={`px-4 py-3 ${compareVariant === "B" ? "font-bold text-blue-700" : "text-slate-600"}`}>
-                        {saving}
-                      </td>
-                      <td className="px-4 py-3">
-                        <button
-                          className={`rounded-full bg-slate-900 px-4 py-1.5 text-white hover:bg-slate-800 ${focusVisibleRing}`}
-                        >
-                          ไปหน้าข้อเสนอ
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <h2 className="text-3xl font-bold">How it works (3 ขั้นตอนสั้น ๆ)</h2>
+            <div className="mt-8 grid gap-4 md:grid-cols-3">
+              {howItWorks.map((item) => (
+                <article key={item.step} className="rounded-2xl border border-slate-200 bg-white p-5">
+                  <p className="inline-flex rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700">{item.step}</p>
+                  <h3 className="mt-3 text-lg font-semibold">{item.title}</h3>
+                  <p className="mt-2 text-sm text-slate-600">{item.desc}</p>
+                </article>
+              ))}
             </div>
           </div>
         </section>
 
         <section className="bg-slate-950 py-16 text-white">
           <div className="mx-auto max-w-6xl px-6">
-            <h2 className="text-3xl font-bold">Trust, Privacy & State Machine</h2>
-            <p className="mt-3 max-w-3xl text-slate-100">
-              ข้อมูลปลอดภัย ไม่เก็บรหัสบัตร และควบคุมสถานะ Subscription ได้ครบ 100%:
-              Pending → Active → Paused → Canceling → Canceled
-            </p>
+            <h2 className="text-3xl font-bold">เห็นภาพใช้งานจริงก่อนเริ่ม</h2>
+            <div className="mt-8 grid gap-6 md:grid-cols-2">
+              <article className="rounded-2xl border border-slate-700 bg-slate-900 p-5">
+                <p className="text-sm text-slate-300">Dashboard Mockup</p>
+                <div className="mt-4 rounded-xl border border-slate-700 bg-slate-950 p-4">
+                  <p className="text-sm text-slate-300">ยอดรวมเดือนนี้</p>
+                  <p className="mt-1 text-3xl font-bold text-blue-400">฿{monthlyTotal.toLocaleString()}</p>
+                  <p className="mt-3 text-sm text-slate-400">เห็นหมวดจ่ายซ้ำและรายการที่ควรตัดได้ในมุมมองเดียว</p>
+                </div>
+              </article>
+              <article className="rounded-2xl border border-slate-700 bg-slate-900 p-5">
+                <p className="text-sm text-slate-300">LINE Alert Preview</p>
+                <div className="mt-4 rounded-xl bg-slate-800 p-4">
+                  <p className="text-sm">🔔 แจ้งเตือนล่วงหน้า 3 วัน: Canva Pro กำลังจะตัดเงิน 420 บ.</p>
+                </div>
+                <p className="mt-3 text-sm text-slate-400">
+                  จุดประสงค์คือให้คุณมีเวลาตัดสินใจก่อนถูกตัดบิล ไม่ใช่ให้มารู้ทีหลังตอนเงินออกไปแล้ว
+                </p>
+              </article>
+            </div>
           </div>
         </section>
 
-        <section className="relative isolate overflow-hidden bg-blue-600 py-16 text-white">
+        <section id="packs" className="py-16">
+          <div className="mx-auto max-w-6xl px-6">
+            <h2 className="text-3xl font-bold">Pack Comparison: เลือกให้ตรงรูปแบบการจ่ายของคุณ</h2>
+            <p className="mt-3 max-w-3xl text-slate-600">
+              ทุกแพ็กออกแบบให้คุณเห็นว่าใช้กับใคร เหมาะกับ subscription แบบไหน และช่วยให้ตัดสินใจคุมต้นทุนได้อย่างไร.
+            </p>
+            <div className="mt-8 grid gap-5 md:grid-cols-3">
+              {packCards.map((pack) => (
+                <article key={pack.name} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+                  <p className="text-sm font-semibold text-blue-700">{pack.name}</p>
+                  <p className="mt-1 text-2xl font-bold">{pack.price}</p>
+                  <p className="mt-3 rounded-lg bg-blue-50 px-3 py-2 text-sm font-semibold text-blue-900">{pack.highlight}</p>
+                  <ul className="mt-4 space-y-2 text-sm text-slate-700">
+                    <li>
+                      <span className="font-semibold">เหมาะกับใคร:</span> {pack.forWho}
+                    </li>
+                    <li>
+                      <span className="font-semibold">จัดการอะไรได้ดี:</span> {pack.handlesBest}
+                    </li>
+                    <li>
+                      <span className="font-semibold">ผลลัพธ์:</span> {pack.outcome}
+                    </li>
+                  </ul>
+                  <button className={`mt-5 rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-100 ${focusVisibleRing}`}>
+                    ดูรายละเอียดแพ็ก
+                  </button>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="faq" className="bg-white py-16">
+          <div className="mx-auto max-w-6xl px-6">
+            <h2 className="text-3xl font-bold">FAQ</h2>
+            <div className="mt-6 space-y-3">
+              {faqs.map((item) => (
+                <details key={item.q} className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+                  <summary className="cursor-pointer font-semibold">{item.q}</summary>
+                  <p className="mt-2 text-sm text-slate-600">{item.a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="relative isolate overflow-hidden bg-blue-700 py-16 text-white">
           <div className="pointer-events-none absolute inset-0 -z-10 opacity-45">
             <div className="absolute left-[-10%] top-[-60%] h-80 w-80 rounded-full bg-[radial-gradient(circle,_rgba(191,219,254,0.4)_0%,_rgba(191,219,254,0)_72%)]" />
             <div className="absolute bottom-[-58%] right-[-4%] h-96 w-96 rounded-full bg-[radial-gradient(circle,_rgba(125,211,252,0.35)_0%,_rgba(125,211,252,0)_74%)]" />
           </div>
           <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-start gap-4 px-6 md:flex-row md:items-center md:justify-between">
             <div>
-              <h2 className="text-3xl font-bold">เริ่มปิดรูรั่วค่า Subscription วันนี้</h2>
-              <p className="mt-2 text-blue-50">ไปถึง Value Moment ให้เร็วที่สุด: รวมยอด + รับแจ้งเตือนครั้งแรก</p>
+              <h2 className="text-3xl font-bold">เริ่มคุมค่า Subscription ก่อนรอบบิลถัดไป</h2>
+              <p className="mt-2 text-blue-50">เริ่มจากบัญชีฟรี แล้วค่อยปรับแพ็กตามรูปแบบการใช้งานจริงของคุณ</p>
             </div>
-            <button className={`rounded-full bg-white px-6 py-3 font-bold text-blue-800 hover:bg-blue-50 ${focusVisibleRingOnBlue}`}>สร้างบัญชีฟรี</button>
+            <button className={`rounded-full bg-white px-6 py-3 font-bold text-blue-800 hover:bg-blue-50 ${focusVisibleRing}`}>
+              สร้างบัญชีฟรี
+            </button>
           </div>
         </section>
       </main>

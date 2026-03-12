@@ -75,3 +75,7 @@ body {
   color: var(--foreground);
   font-family: Inter, "Noto Sans Thai", "Noto Sans", system-ui, sans-serif;
 }
+
+@utility cta-primary {
+  @apply bg-blue-700 text-white shadow-lg shadow-blue-200 hover:bg-blue-800;
+}
