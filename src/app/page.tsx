@@ -110,11 +110,11 @@ export default function Home() {
                   เพิ่มรายการของคุณ
                 </button>
               ) : (
-                <button className="rounded-full bg-blue-600 px-6 py-3 font-semibold text-white shadow-lg shadow-blue-200 hover:bg-blue-700">
+                <button aria-label="เริ่มใช้ฟรีผ่าน LINE" className="rounded-full bg-blue-600 px-6 py-3 font-semibold text-white shadow-lg shadow-blue-200 hover:bg-blue-700">
                   เริ่มใช้ฟรีผ่าน LINE
                 </button>
               )}
-              <button className="rounded-full border border-slate-300 px-6 py-3 font-semibold hover:bg-slate-100">
+              <button aria-label="ดู Demo Dashboard" className="rounded-full border border-slate-300 px-6 py-3 font-semibold hover:bg-slate-100">
                 ดู Demo Dashboard
               </button>
             </div>
@@ -286,7 +286,7 @@ export default function Home() {
                         {saving}
                       </td>
                       <td className="px-4 py-3">
-                        <button className="rounded-full bg-slate-900 px-4 py-1.5 text-white">ไปหน้าข้อเสนอ</button>
+                        <button aria-label={`ไปหน้าข้อเสนอ ${pack}`} className="rounded-full bg-slate-900 px-4 py-1.5 text-white">ไปหน้าข้อเสนอ</button>
                       </td>
                     </tr>
                   ))}
@@ -326,7 +326,7 @@ export default function Home() {
               <h2 className="text-3xl font-bold">เริ่มปิดรูรั่วค่า Subscription วันนี้</h2>
               <p className="mt-2 text-blue-100">ไปถึง Value Moment ให้เร็วที่สุด: รวมยอด + รับแจ้งเตือนครั้งแรก</p>
             </div>
-            <button className="rounded-full bg-white px-6 py-3 font-bold text-blue-700 hover:bg-blue-50">เริ่มใช้ฟรีผ่าน LINE</button>
+            <button aria-label="เริ่มใช้ฟรีผ่าน LINE (Final CTA)" className="rounded-full bg-white px-6 py-3 font-bold text-blue-700 hover:bg-blue-50">เริ่มใช้ฟรีผ่าน LINE</button>
           </div>
         </section>
       </main>
