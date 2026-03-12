@@ -20,6 +20,9 @@ const packEntryVariant: "A" | "B" = "B";
 const compareVariant: "A" | "B" = "B";
 
 export default function Home() {
+  const focusVisibleRing =
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950";
+
   const [selected, setSelected] = useState<string[]>(["Netflix", "Canva Pro"]);
 
   const monthlyTotal = useMemo(
@@ -46,14 +49,16 @@ export default function Home() {
             <span className="text-white">Sub</span>
             <span className="text-blue-600 drop-shadow-[0_0_8px_rgba(37,99,235,0.8)]">Manager</span>
           </p>
-          <div className="flex items-center gap-5 text-sm font-medium text-slate-200">
-            <a href="#features" className="hover:text-white">
+          <div className="flex items-center gap-5 text-sm font-medium text-slate-100">
+            <a href="#features" className={`rounded-sm text-slate-100 hover:text-white ${focusVisibleRing}`}>
               Features
             </a>
-            <a href="#packs" className="hover:text-white">
+            <a href="#packs" className={`rounded-sm text-slate-100 hover:text-white ${focusVisibleRing}`}>
               Packs
             </a>
-            <button className="rounded-full border border-slate-600 px-4 py-1.5 hover:border-slate-300">
+            <button
+              className={`rounded-full border border-slate-500 px-4 py-1.5 text-slate-100 hover:border-slate-200 hover:text-white ${focusVisibleRing}`}
+            >
               Log in
             </button>
           </div>
@@ -69,21 +74,27 @@ export default function Home() {
             <h1 className="text-4xl font-bold leading-tight md:text-5xl">
               หยุด &ldquo;เงินรั่วไหล&rdquo; จัดการทุก Subscription จบในที่เดียว
             </h1>
-            <p className="text-lg text-slate-600">
+            <p className="text-lg text-slate-700">
               รวมทุก Subscription ไว้ที่เดียว เห็นยอดรวมชัดเจน รับการแจ้งเตือนก่อนตัดบิล 3-5 วัน
               ผ่าน Email และ LINE พร้อมแนะนำแพ็กที่คุ้มที่สุดสำหรับคุณ
             </p>
             <div className="flex flex-wrap gap-3">
               {onboardingVariant === "A" ? (
-                <button className="rounded-full bg-blue-600 px-6 py-3 font-semibold text-white hover:bg-blue-700">
+                <button
+                  className={`rounded-full bg-blue-700 px-6 py-3 font-semibold text-white hover:bg-blue-800 ${focusVisibleRing}`}
+                >
                   เพิ่มรายการของคุณ
                 </button>
               ) : (
-                <button className="rounded-full bg-blue-600 px-6 py-3 font-semibold text-white hover:bg-blue-700">
+                <button
+                  className={`rounded-full bg-blue-700 px-6 py-3 font-semibold text-white hover:bg-blue-800 ${focusVisibleRing}`}
+                >
                   เริ่มใช้งานผ่าน LINE
                 </button>
               )}
-              <button className="rounded-full border border-slate-300 px-6 py-3 font-semibold hover:bg-slate-100">
+              <button
+                className={`rounded-full border border-slate-400 bg-white px-6 py-3 font-semibold text-slate-800 hover:bg-slate-100 ${focusVisibleRing}`}
+              >
                 ดูเดโมแดชบอร์ด
               </button>
             </div>
@@ -93,9 +104,9 @@ export default function Home() {
           </div>
           <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-xl">
             <div className="rounded-2xl bg-slate-900 p-4 text-white shadow-2xl">
-              <p className="text-xs text-slate-300">LINE Alert Preview</p>
+              <p className="text-xs text-slate-200">LINE Alert Preview</p>
               <div className="mt-3 rounded-xl bg-slate-800 p-4">
-                <p className="text-sm">🔔 พรุ่งนี้ Netflix จะตัดเงิน 419 บ. เตรียมเงินไว้ด้วยนะ!</p>
+                <p className="text-sm text-slate-100">🔔 พรุ่งนี้ Netflix จะตัดเงิน 419 บ. เตรียมเงินไว้ด้วยนะ!</p>
               </div>
             </div>
             <div className="mt-4 grid grid-cols-2 gap-3 text-sm">
@@ -114,17 +125,17 @@ export default function Home() {
         <section className="bg-slate-950 py-16 text-white">
           <div className="mx-auto max-w-6xl px-6">
             <h2 className="text-3xl font-bold">คุณจ่ายแอปซ้ำซ้อนอยู่เท่าไร?</h2>
-            <p className="mt-2 text-slate-300">ติ๊กแอปที่ใช้อยู่ แล้วดูเงินรั่วไหลต่อปีแบบเรียลไทม์</p>
+            <p className="mt-2 text-slate-100">ติ๊กแอปที่ใช้อยู่ แล้วดูเงินรั่วไหลต่อปีแบบเรียลไทม์</p>
             <div className="mt-8 grid gap-8 md:grid-cols-2">
               <div className="space-y-3">
                 {subscriptions.map((item) => (
                   <label key={item.name} className="flex items-center justify-between rounded-xl border border-slate-800 p-4">
                     <span>{item.name}</span>
                     <div className="flex items-center gap-4">
-                      <span className="text-slate-400">฿{item.monthly}/เดือน</span>
+                      <span className="text-slate-200">฿{item.monthly}/เดือน</span>
                       <input
                         type="checkbox"
-                        className="h-4 w-4 accent-blue-500"
+                        className="h-4 w-4 accent-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
                         checked={selected.includes(item.name)}
                         onChange={() => toggleApp(item.name)}
                       />
@@ -133,9 +144,9 @@ export default function Home() {
                 ))}
               </div>
               <div className="rounded-2xl border border-blue-500/50 bg-slate-900 p-6">
-                <p className="text-slate-400">ยอดรายเดือนที่เลือก</p>
+                <p className="text-slate-200">ยอดรายเดือนที่เลือก</p>
                 <p className="mt-1 text-5xl font-bold text-blue-400">฿{monthlyTotal.toLocaleString()}</p>
-                <p className="mt-6 text-lg text-slate-200">
+                <p className="mt-6 text-lg text-slate-100">
                   คุณอาจมีเงินรั่วไหล <span className="font-bold text-blue-300">฿{yearlyLeakage.toLocaleString()}/ปี</span>
                   ให้เราช่วยเตือนก่อนโดนหักเงินฟรีๆ
                 </p>
@@ -155,7 +166,7 @@ export default function Home() {
               ].map(([title, desc]) => (
                 <article key={title} className="rounded-2xl bg-white p-5 shadow-sm">
                   <h3 className="text-xl font-semibold">{title}</h3>
-                  <p className="mt-2 text-slate-600">{desc}</p>
+                  <p className="mt-2 text-slate-700">{desc}</p>
                 </article>
               ))}
             </div>
@@ -186,16 +197,36 @@ export default function Home() {
         <section id="packs" className="py-16">
           <div className="mx-auto max-w-6xl px-6">
             <h2 className="text-3xl font-bold">The Ecosystem: Subscription Packs</h2>
-            <p className="mt-2 text-slate-600">Active experiments: Pack Entry {packEntryVariant}, Compare UI {compareVariant}</p>
+            <p className="mt-2 text-slate-700">Active experiments: Pack Entry {packEntryVariant}, Compare UI {compareVariant}</p>
             <div className="mt-6 flex flex-wrap gap-3">
               {packEntryVariant === "A" ? (
-                <button className="rounded-full bg-slate-900 px-5 py-2 font-semibold text-white">ดูแพ็กทั้งหมด</button>
+                <button
+                  className={`rounded-full bg-slate-900 px-5 py-2 font-semibold text-white hover:bg-slate-800 ${focusVisibleRing}`}
+                >
+                  ดูแพ็กทั้งหมด
+                </button>
               ) : (
-                <button className="rounded-full bg-blue-600 px-5 py-2 font-semibold text-white">ทำควิซค้นหา Pack ที่ใช่</button>
+                <button
+                  className={`rounded-full bg-blue-700 px-5 py-2 font-semibold text-white hover:bg-blue-800 ${focusVisibleRing}`}
+                >
+                  ทำควิซค้นหา Pack ที่ใช่
+                </button>
               )}
-              <button className="rounded-full border border-slate-300 px-5 py-2 font-semibold">Student</button>
-              <button className="rounded-full border border-slate-300 px-5 py-2 font-semibold">Creator</button>
-              <button className="rounded-full border border-slate-300 px-5 py-2 font-semibold">Developer</button>
+              <button
+                className={`rounded-full border border-slate-400 bg-white px-5 py-2 font-semibold text-slate-800 hover:bg-slate-100 ${focusVisibleRing}`}
+              >
+                Student
+              </button>
+              <button
+                className={`rounded-full border border-slate-400 bg-white px-5 py-2 font-semibold text-slate-800 hover:bg-slate-100 ${focusVisibleRing}`}
+              >
+                Creator
+              </button>
+              <button
+                className={`rounded-full border border-slate-400 bg-white px-5 py-2 font-semibold text-slate-800 hover:bg-slate-100 ${focusVisibleRing}`}
+              >
+                Developer
+              </button>
             </div>
             <div className="mt-8 overflow-hidden rounded-2xl border border-slate-200">
               <table className="w-full bg-white text-left text-sm">
@@ -220,7 +251,11 @@ export default function Home() {
                         {saving}
                       </td>
                       <td className="px-4 py-3">
-                        <button className="rounded-full bg-slate-900 px-4 py-1.5 text-white">ไปหน้าข้อเสนอ</button>
+                        <button
+                          className={`rounded-full bg-slate-900 px-4 py-1.5 text-white hover:bg-slate-800 ${focusVisibleRing}`}
+                        >
+                          ไปหน้าข้อเสนอ
+                        </button>
                       </td>
                     </tr>
                   ))}
@@ -233,7 +268,7 @@ export default function Home() {
         <section className="bg-slate-950 py-16 text-white">
           <div className="mx-auto max-w-6xl px-6">
             <h2 className="text-3xl font-bold">Trust, Privacy & State Machine</h2>
-            <p className="mt-3 max-w-3xl text-slate-300">
+            <p className="mt-3 max-w-3xl text-slate-100">
               ข้อมูลปลอดภัย ไม่เก็บรหัสบัตร และควบคุมสถานะ Subscription ได้ครบ 100%:
               Pending → Active → Paused → Canceling → Canceled
             </p>
@@ -244,9 +279,13 @@ export default function Home() {
           <div className="mx-auto flex max-w-6xl flex-col items-start gap-4 px-6 md:flex-row md:items-center md:justify-between">
             <div>
               <h2 className="text-3xl font-bold">เริ่มปิดรูรั่วค่า Subscription วันนี้</h2>
-              <p className="mt-2 text-blue-100">ไปถึง Value Moment ให้เร็วที่สุด: รวมยอด + รับแจ้งเตือนครั้งแรก</p>
+              <p className="mt-2 text-blue-50">ไปถึง Value Moment ให้เร็วที่สุด: รวมยอด + รับแจ้งเตือนครั้งแรก</p>
             </div>
-            <button className="rounded-full bg-white px-6 py-3 font-bold text-blue-700 hover:bg-blue-50">สร้างบัญชีฟรี</button>
+            <button
+              className="rounded-full bg-white px-6 py-3 font-bold text-blue-800 hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-200 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-700"
+            >
+              สร้างบัญชีฟรี
+            </button>
           </div>
         </section>
       </main>
