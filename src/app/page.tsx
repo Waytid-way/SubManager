@@ -61,8 +61,13 @@ export default function Home() {
       </nav>
 
       <main>
-        <section className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-2 md:items-center">
-          <div className="space-y-6">
+        <section className="relative isolate overflow-hidden">
+          <div className="pointer-events-none absolute inset-0 -z-10 opacity-60">
+            <div className="absolute left-[-12%] top-[-30%] h-72 w-72 rounded-full bg-[radial-gradient(circle,_rgba(59,130,246,0.2)_0%,_rgba(59,130,246,0)_72%)]" />
+            <div className="absolute bottom-[-36%] right-[-10%] h-96 w-96 rounded-full bg-[radial-gradient(circle,_rgba(14,165,233,0.18)_0%,_rgba(14,165,233,0)_70%)]" />
+          </div>
+          <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-2 md:items-center">
+            <div className="space-y-6">
             <p className="inline-flex rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700">
               Phase 1: Value Moment + Affiliate CTR
             </p>
@@ -90,29 +95,34 @@ export default function Home() {
             <p className="text-xs font-medium text-slate-500">
               Active Experiment: Onboarding Variant {onboardingVariant}
             </p>
-          </div>
-          <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-xl">
-            <div className="rounded-2xl bg-slate-900 p-4 text-white shadow-2xl">
-              <p className="text-xs text-slate-300">LINE Alert Preview</p>
-              <div className="mt-3 rounded-xl bg-slate-800 p-4">
-                <p className="text-sm">🔔 พรุ่งนี้ Netflix จะตัดเงิน 419 บ. เตรียมเงินไว้ด้วยนะ!</p>
-              </div>
             </div>
-            <div className="mt-4 grid grid-cols-2 gap-3 text-sm">
-              <div className="rounded-xl bg-slate-100 p-3">
-                <p className="text-slate-500">Monthly Total</p>
-                <p className="text-xl font-bold">฿2,390</p>
+            <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-xl">
+              <div className="rounded-2xl bg-slate-900 p-4 text-white shadow-2xl">
+                <p className="text-xs text-slate-300">LINE Alert Preview</p>
+                <div className="mt-3 rounded-xl bg-slate-800 p-4">
+                  <p className="text-sm">🔔 พรุ่งนี้ Netflix จะตัดเงิน 419 บ. เตรียมเงินไว้ด้วยนะ!</p>
+                </div>
               </div>
-              <div className="rounded-xl bg-blue-50 p-3">
-                <p className="text-blue-700">Next Bill</p>
-                <p className="text-xl font-bold text-blue-800">Tomorrow</p>
+              <div className="mt-4 grid grid-cols-2 gap-3 text-sm">
+                <div className="rounded-xl bg-slate-100 p-3">
+                  <p className="text-slate-500">Monthly Total</p>
+                  <p className="text-xl font-bold">฿2,390</p>
+                </div>
+                <div className="rounded-xl bg-blue-50 p-3">
+                  <p className="text-blue-700">Next Bill</p>
+                  <p className="text-xl font-bold text-blue-800">Tomorrow</p>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="bg-slate-950 py-16 text-white">
-          <div className="mx-auto max-w-6xl px-6">
+        <section className="relative isolate overflow-hidden bg-slate-950 py-16 text-white">
+          <div className="pointer-events-none absolute inset-0 -z-10 opacity-45">
+            <div className="absolute left-[-14%] top-[-15%] h-80 w-80 rounded-full bg-[radial-gradient(circle,_rgba(59,130,246,0.35)_0%,_rgba(59,130,246,0)_72%)]" />
+            <div className="absolute bottom-[-30%] right-[8%] h-96 w-96 rounded-full bg-[radial-gradient(circle,_rgba(147,197,253,0.25)_0%,_rgba(147,197,253,0)_74%)]" />
+          </div>
+          <div className="relative z-10 mx-auto max-w-6xl px-6">
             <h2 className="text-3xl font-bold">คุณจ่ายแอปซ้ำซ้อนอยู่เท่าไร?</h2>
             <p className="mt-2 text-slate-300">ติ๊กแอปที่ใช้อยู่ แล้วดูเงินรั่วไหลต่อปีแบบเรียลไทม์</p>
             <div className="mt-8 grid gap-8 md:grid-cols-2">
@@ -240,8 +250,12 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="bg-blue-600 py-16 text-white">
-          <div className="mx-auto flex max-w-6xl flex-col items-start gap-4 px-6 md:flex-row md:items-center md:justify-between">
+        <section className="relative isolate overflow-hidden bg-blue-600 py-16 text-white">
+          <div className="pointer-events-none absolute inset-0 -z-10 opacity-45">
+            <div className="absolute left-[-10%] top-[-60%] h-80 w-80 rounded-full bg-[radial-gradient(circle,_rgba(191,219,254,0.4)_0%,_rgba(191,219,254,0)_72%)]" />
+            <div className="absolute bottom-[-58%] right-[-4%] h-96 w-96 rounded-full bg-[radial-gradient(circle,_rgba(125,211,252,0.35)_0%,_rgba(125,211,252,0)_74%)]" />
+          </div>
+          <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-start gap-4 px-6 md:flex-row md:items-center md:justify-between">
             <div>
               <h2 className="text-3xl font-bold">เริ่มปิดรูรั่วค่า Subscription วันนี้</h2>
               <p className="mt-2 text-blue-100">ไปถึง Value Moment ให้เร็วที่สุด: รวมยอด + รับแจ้งเตือนครั้งแรก</p>
