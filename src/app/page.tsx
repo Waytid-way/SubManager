@@ -144,10 +144,10 @@ export default function Home() {
     <div className="bg-slate-50 text-slate-900">
       <nav className="sticky top-0 z-20 border-b border-slate-800 bg-slate-950/95 backdrop-blur">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-          <p className="text-2xl font-bold tracking-tight">
+          <span className="text-2xl font-bold tracking-tight">
             <span className="text-white">Sub</span>
             <span className="text-blue-500 drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]">Manager</span>
-          </p>
+          </span>
           <div className="hidden items-center gap-5 text-sm font-medium text-slate-100 md:flex">
             <a href="#calculator" className={`rounded-sm text-slate-100 hover:text-white ${focusVisibleRing}`}>
               Calculator
@@ -173,10 +173,10 @@ export default function Home() {
               <p className="inline-flex rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700">
                 คุม subscription ก่อนเงินหายไปแบบไม่รู้ตัว
               </p>
-              <h1 className="text-4xl font-bold leading-tight md:text-5xl">
+              <h1 className="text-hero">
                 หยุดเงินรั่วจาก Subscription ที่คุณไม่ได้ตั้งใจจ่าย
               </h1>
-              <p className="text-lg text-slate-700">
+              <p className="text-body-lg text-slate-700 max-w-[var(--measure-body)]">
                 รู้ล่วงหน้าว่าเงินจะถูกตัดเมื่อไรและคุมยอดรวมรายเดือนให้ไม่บานปลาย แม้คุณใช้หลายบริการพร้อมกัน.
               </p>
               <div className="flex flex-wrap gap-3">
@@ -220,8 +220,8 @@ export default function Home() {
 
         <section className="bg-slate-950 py-14 text-white">
           <div className="mx-auto max-w-6xl px-6">
-            <h2 className="text-3xl font-bold">เงินรั่วไหลเกิดจากการลืม ไม่ใช่จากการตั้งใจจ่าย</h2>
-            <p className="mt-3 max-w-3xl text-slate-200">
+            <h2 className="text-section">เงินรั่วไหลเกิดจากการลืม ไม่ใช่จากการตั้งใจจ่าย</h2>
+            <p className="mt-3 max-w-3xl text-body text-slate-200">
               ยิ่งใช้หลายบริการ ยิ่งมีโอกาสลืมรอบบิลและจ่ายซ้ำโดยไม่รู้ตัว สิ่งที่ต้องมีคือภาพรวมที่ชัดเจนและการเตือนก่อนเงินถูกตัด.
             </p>
             <div className="mt-6 grid gap-3 md:grid-cols-3">
@@ -236,8 +236,8 @@ export default function Home() {
 
         <section id="calculator" className="bg-slate-900 py-16 text-white">
           <div className="mx-auto max-w-6xl px-6">
-            <h2 className="text-3xl font-bold">คำนวณก่อนว่าเงินคุณไหลออกเดือนละเท่าไร</h2>
-            <p className="mt-3 max-w-3xl text-slate-300">
+            <h2 className="text-section">คำนวณก่อนว่าเงินคุณไหลออกเดือนละเท่าไร</h2>
+            <p className="mt-3 max-w-3xl text-body text-slate-300">
               เลือกรายการที่คุณใช้อยู่ด้านล่าง เพื่อเห็นตัวเลขรวมทันทีและเช็กว่ามีรายการไหนที่ควรหยุดก่อนรอบตัดบิลถัดไป.
             </p>
             <div className="mt-8 grid gap-8 md:grid-cols-2">
@@ -259,7 +259,7 @@ export default function Home() {
               </div>
               <div className="rounded-2xl border border-blue-500/50 bg-slate-950 p-6">
                 <p className="text-slate-400">ยอดรวมรายเดือนตอนนี้</p>
-                <p className="mt-1 text-5xl font-bold text-blue-400">฿{monthlyTotal.toLocaleString()}</p>
+                <p className="mt-1 text-5xl font-bold text-blue-400 tabular-nums">฿{monthlyTotal.toLocaleString()}</p>
                 <p className="mt-6 text-lg text-slate-200">
                   ถ้าปล่อยไว้ทั้งปี คุณอาจจ่ายรวมประมาณ <span className="font-bold text-blue-300">฿{yearlyLeakage.toLocaleString()}/ปี</span>
                 </p>
@@ -279,12 +279,12 @@ export default function Home() {
 
         <section className="bg-white py-16">
           <div className="mx-auto max-w-6xl px-6">
-            <h2 className="text-3xl font-bold">ผลลัพธ์ที่คุณควรได้จากการจัดการ Subscription</h2>
+            <h2 className="text-section">ผลลัพธ์ที่คุณควรได้จากการจัดการ Subscription</h2>
             <div className="mt-8 grid gap-5 md:grid-cols-3">
               {solutionOutcomes.map((item) => (
                 <article key={item.title} className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-                  <h3 className="text-xl font-semibold">{item.title}</h3>
-                  <p className="mt-2 text-slate-600">{item.desc}</p>
+                  <h3 className="text-card-title">{item.title}</h3>
+                  <p className="mt-2 text-body text-slate-600">{item.desc}</p>
                 </article>
               ))}
             </div>
@@ -293,13 +293,13 @@ export default function Home() {
 
         <section className="bg-slate-100 py-16">
           <div className="mx-auto max-w-6xl px-6">
-            <h2 className="text-3xl font-bold">How it works (3 ขั้นตอนสั้น ๆ)</h2>
+            <h2 className="text-section">How it works (3 ขั้นตอนสั้น ๆ)</h2>
             <div className="mt-8 grid gap-4 md:grid-cols-3">
               {howItWorks.map((item) => (
                 <article key={item.step} className="rounded-2xl border border-slate-200 bg-white p-5">
                   <p className="inline-flex rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700">{item.step}</p>
-                  <h3 className="mt-3 text-lg font-semibold">{item.title}</h3>
-                  <p className="mt-2 text-sm text-slate-600">{item.desc}</p>
+                  <h3 className="mt-3 text-card-title">{item.title}</h3>
+                  <p className="mt-2 text-body text-sm text-slate-600">{item.desc}</p>
                 </article>
               ))}
             </div>
@@ -308,14 +308,14 @@ export default function Home() {
 
         <section className="bg-slate-950 py-16 text-white">
           <div className="mx-auto max-w-6xl px-6">
-            <h2 className="text-3xl font-bold">เห็นภาพใช้งานจริงก่อนเริ่ม</h2>
+            <h2 className="text-section">เห็นภาพใช้งานจริงก่อนเริ่ม</h2>
             <div className="mt-8 grid gap-6 md:grid-cols-2">
               <article className="rounded-2xl border border-slate-700 bg-slate-900 p-5">
                 <p className="text-sm text-slate-300">Dashboard Mockup</p>
                 <div className="mt-4 rounded-xl border border-slate-700 bg-slate-950 p-4">
                   <p className="text-sm text-slate-300">ยอดรวมเดือนนี้</p>
                   <p className="mt-1 text-3xl font-bold text-blue-400">฿{monthlyTotal.toLocaleString()}</p>
-                  <p className="mt-3 text-sm text-slate-400">เห็นหมวดจ่ายซ้ำและรายการที่ควรตัดได้ในมุมมองเดียว</p>
+                  <p className="mt-3 text-body text-sm text-slate-400">เห็นหมวดจ่ายซ้ำและรายการที่ควรตัดได้ในมุมมองเดียว</p>
                 </div>
               </article>
               <article className="rounded-2xl border border-slate-700 bg-slate-900 p-5">
@@ -323,7 +323,7 @@ export default function Home() {
                 <div className="mt-4 rounded-xl bg-slate-800 p-4">
                   <p className="text-sm">🔔 แจ้งเตือนล่วงหน้า 3 วัน: Canva Pro กำลังจะตัดเงิน 420 บ.</p>
                 </div>
-                <p className="mt-3 text-sm text-slate-400">
+                <p className="mt-3 text-body text-sm text-slate-400">
                   จุดประสงค์คือให้คุณมีเวลาตัดสินใจก่อนถูกตัดบิล ไม่ใช่ให้มารู้ทีหลังตอนเงินออกไปแล้ว
                 </p>
               </article>
@@ -333,8 +333,8 @@ export default function Home() {
 
         <section id="packs" className="py-16">
           <div className="mx-auto max-w-6xl px-6">
-            <h2 className="text-3xl font-bold">Pack Comparison: เลือกให้ตรงรูปแบบการจ่ายของคุณ</h2>
-            <p className="mt-3 max-w-3xl text-slate-600">
+            <h2 className="text-section">Pack Comparison: เลือกให้ตรงรูปแบบการจ่ายของคุณ</h2>
+            <p className="mt-3 max-w-3xl text-body text-slate-600">
               ทุกแพ็กออกแบบให้คุณเห็นว่าใช้กับใคร เหมาะกับ subscription แบบไหน และช่วยให้ตัดสินใจคุมต้นทุนได้อย่างไร.
             </p>
             <div className="mt-8 grid gap-5 md:grid-cols-3">
@@ -343,7 +343,7 @@ export default function Home() {
                   <p className="text-sm font-semibold text-blue-700">{pack.name}</p>
                   <p className="mt-1 text-2xl font-bold">{pack.price}</p>
                   <p className="mt-3 rounded-lg bg-blue-50 px-3 py-2 text-sm font-semibold text-blue-900">{pack.highlight}</p>
-                  <ul className="mt-4 space-y-2 text-sm text-slate-700">
+                  <ul className="mt-4 space-y-2 text-body text-sm text-slate-700">
                     <li>
                       <span className="font-semibold">เหมาะกับใคร:</span> {pack.forWho}
                     </li>
@@ -365,12 +365,12 @@ export default function Home() {
 
         <section id="faq" className="bg-white py-16">
           <div className="mx-auto max-w-6xl px-6">
-            <h2 className="text-3xl font-bold">FAQ</h2>
+            <h2 className="text-section">FAQ</h2>
             <div className="mt-6 space-y-3">
               {faqs.map((item) => (
                 <details key={item.q} className="rounded-xl border border-slate-200 bg-slate-50 p-4">
                   <summary className="cursor-pointer font-semibold">{item.q}</summary>
-                  <p className="mt-2 text-sm text-slate-600">{item.a}</p>
+                  <p className="mt-2 text-body text-sm text-slate-600">{item.a}</p>
                 </details>
               ))}
             </div>
@@ -384,8 +384,8 @@ export default function Home() {
           </div>
           <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-start gap-4 px-6 md:flex-row md:items-center md:justify-between">
             <div>
-              <h2 className="text-3xl font-bold">เริ่มคุมค่า Subscription ก่อนรอบบิลถัดไป</h2>
-              <p className="mt-2 text-blue-50">เริ่มจากบัญชีฟรี แล้วค่อยปรับแพ็กตามรูปแบบการใช้งานจริงของคุณ</p>
+              <h2 className="text-section">เริ่มคุมค่า Subscription ก่อนรอบบิลถัดไป</h2>
+              <p className="mt-2 text-body text-blue-50">เริ่มจากบัญชีฟรี แล้วค่อยปรับแพ็กตามรูปแบบการใช้งานจริงของคุณ</p>
             </div>
             <button className={`rounded-full bg-white px-6 py-3 font-bold text-blue-800 hover:bg-blue-50 ${focusVisibleRing}`}>
               สร้างบัญชีฟรี
@@ -396,10 +396,10 @@ export default function Home() {
 
       <footer className="bg-slate-950 py-10">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 text-slate-400">
-          <p className="text-2xl font-bold tracking-tight">
+          <span className="text-2xl font-bold tracking-tight">
             <span className="text-white">Sub</span>
             <span className="text-blue-600 drop-shadow-[0_0_8px_rgba(37,99,235,0.8)]">Manager</span>
-          </p>
+          </span>
           <p className="text-sm">© {new Date().getFullYear()} SubManager. All rights reserved.</p>
         </div>
       </footer>
